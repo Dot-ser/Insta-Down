@@ -5,7 +5,7 @@ import yt_dlp
 app = Flask(__name__)
 @app.route('/ads.txt')
 def ads_txt():
-    return send_from_directory('templates', 'ads.txt')
+    return send_from_directory('static', 'ads.txt')
 @app.route('/')
 def home():
     return render_template('index.html')
