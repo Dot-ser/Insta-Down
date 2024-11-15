@@ -7,20 +7,20 @@ app = Flask(__name__)
 # Catch all errors and redirect to error.html
 @app.errorhandler(Exception)
 def handle_exception(error):
-    return render_template('error.html'), 500
+    return render_template('umbi.html'), 500
 
 # Catch all HTTP errors
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('error.html'), 404
+    return render_template('umbi.html'), 404
 
 @app.errorhandler(405)
 def method_not_allowed(error):
-    return render_template('error.html'), 405
+    return render_template('umbi.html'), 405
 
 @app.errorhandler(500)
 def internal_error(error):
-    return render_template('error.html'), 500
+    return render_template('umbi.html'), 500
 
 
 # ad.txt
