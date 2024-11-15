@@ -3,13 +3,34 @@ import os
 import yt_dlp
 
 app = Flask(__name__)
+
+# Catch all errors and redirect to error.html
+@app.errorhandler(Exception)
+def handle_exception(error):
+    return render_template('error.html'), 500
+
+# Catch all HTTP errors
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('error.html'), 404
+
+@app.errorhandler(405)
+def method_not_allowed(error):
+    return render_template('error.html'), 405
+
+@app.errorhandler(500)
+def internal_error(error):
+    return render_template('error.html'), 500
+
+
+# ad.txt
 @app.route('/ads.txt')
 def ads_txt():
     return send_from_directory('static', 'ads.txt')
 @app.route('/')
 def home():
     return render_template('index.html')
-
+# download 
 @app.route('/download', methods=['POST'])
 def download():
     url = request.form['url']
