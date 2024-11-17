@@ -34,8 +34,8 @@ def home():
 @app.route('/download', methods=['POST'])
 def download():
     url = request.form['url']
-    if "instagram.com" not in url:
-        return "Only Instagram links are supported!", 400
+    if "instagram.com/reel" not in url:
+        return "Only Instagram Reels are supported!", 400
 
     output_path = "downloads/"
     os.makedirs(output_path, exist_ok=True)
